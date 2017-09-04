@@ -1,14 +1,25 @@
-const fetchData = (): Promise<number> => {
+import faker from "faker";
+
+interface IUser {
+  name: string;
+  email: string;
+}
+
+const getUser = (): Promise<IUser> => {
   return new Promise(resolve => {
     setTimeout(() => {
-      resolve(2222);
-    }, 200);
+      const user: IUser = {
+        name: faker.name.findName(),
+        email: faker.internet.email()
+      };
+      resolve(user);
+    }, 1000);
   });
 };
 
-async function fn(): Promise<number> {
-  const i = await fetchData();
-  return 1 + i;
+async function fn(): Promise<IUser> {
+  const user = await getUser();
+  return user;
 }
 
-fn().then((num: number) => console.log(num));
+fn().then((user: IUser) => console.log(user));
