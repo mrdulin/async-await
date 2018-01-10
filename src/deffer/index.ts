@@ -7,7 +7,9 @@ interface IDeffer<T> {
   reject: IReject<T>;
 }
 
-function noop() {}
+function noop() {
+  /** */
+}
 
 interface IListener<T> {
   [key: string]: Array<IDeffer<T>>;

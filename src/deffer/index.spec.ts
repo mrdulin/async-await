@@ -1,12 +1,15 @@
-import { Pubsub } from './';
+import { expect } from 'chai';
 
-const pubsub = new Pubsub();
+import { Pubsub } from '.';
 
-const channel: string = 'ai';
-pubsub.subscribe(channel).then(data => {
-  console.log('data: ', data);
+describe('deffer test suites', () => {
+  const pubsub = new Pubsub();
+  it('should publish and subscribe correctly', () => {
+    const channel: string = 'ai';
+    const message = { msg: 'deffer test' };
+    pubsub.subscribe(channel).then(result => {
+      expect(result).to.be.eql(message);
+    });
+    pubsub.publish(channel, message);
+  });
 });
-
-setTimeout(() => {
-  pubsub.publish(channel, { msg: 'deffer test' });
-}, 2000);

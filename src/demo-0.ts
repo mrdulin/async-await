@@ -1,5 +1,5 @@
 const fetchData = (): Promise<number> => {
-  return new Promise((resolve) => {
+  return new Promise(resolve => {
     setTimeout(() => {
       resolve(2222);
     }, 200);
