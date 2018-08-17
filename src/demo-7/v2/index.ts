@@ -1,4 +1,6 @@
-import { setToken, getToken } from './util-v2';
+import { setToken, getToken } from './util';
+
+import './a';
 
 setToken();
 getToken();
